@@ -1,0 +1,20 @@
+name: Action workflow test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [ catalog, order ]
+        role: [ api, consumer ]
+    steps:
+      - name: Processing dir name
+      env:
+        dir: "${{ matrix.service }}-${{ matrix.role }}"
+      run: echo $dir
