@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [ catalog, order ]
-        role: [ api, consumer ]
+        service: [ test-api, test-consumer]
     
     steps:
-      - name: Processing dir name
-        env:
-          dir: "${{ matrix.service }}-${{ matrix.role }}"
-        run: echo $dir
+      - name: set dir name
+        run: |
+          SERVICE=${{ matrix.service }}
+          DIR_NAME="${SERVICE//-api/}"
+          echo $DIR_NAME
