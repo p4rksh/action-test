@@ -16,6 +16,6 @@ jobs:
     steps:
       - name: set dir name
         run: |
-          SERVICE=${{ matrix.service }}
-          DIR_NAME="${SERVICE//-api/}"
+          SERVICE=service-${{ matrix.service }}-eks
+          DIR_NAME="${SERVICE//-api-eks/-api}"
           echo $DIR_NAME
